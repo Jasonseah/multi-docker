@@ -11,10 +11,10 @@ script:
   - docker run -e CI=true jajacontainer/react-test npm test
 
 after_succes:
-  - docker build -t jajacontainer/multi-client -f ./client
-  - docker build -t jajacontainer/multi-server -f ./server
-  - docker build -t jajacontainer/multi-nginx -f ./nginx
-  - docker build -t jajacontainer/multi-worker -f ./worker
+  - docker build -t jajacontainer/multi-client ./client
+  - docker build -t jajacontainer/multi-server ./server
+  - docker build -t jajacontainer/multi-nginx ./nginx
+  - docker build -t jajacontainer/multi-worker ./worker
   ## Login Docker hub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   ## Take all the image to our own docker hub
